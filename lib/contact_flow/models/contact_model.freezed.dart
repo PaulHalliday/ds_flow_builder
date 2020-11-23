@@ -145,10 +145,13 @@ class _$ContactStateTearOff {
 
 // ignore: unused_element
   _ContactState call(
-      {List<Contact> contactList = const [], Contact newContact}) {
+      {List<Contact> contactList = const [],
+      Contact newContact,
+      Contact selectedContact}) {
     return _ContactState(
       contactList: contactList,
       newContact: newContact,
+      selectedContact: selectedContact,
     );
   }
 }
@@ -161,6 +164,7 @@ const $ContactState = _$ContactStateTearOff();
 mixin _$ContactState {
   List<Contact> get contactList;
   Contact get newContact;
+  Contact get selectedContact;
 
   $ContactStateCopyWith<ContactState> get copyWith;
 }
@@ -170,9 +174,11 @@ abstract class $ContactStateCopyWith<$Res> {
   factory $ContactStateCopyWith(
           ContactState value, $Res Function(ContactState) then) =
       _$ContactStateCopyWithImpl<$Res>;
-  $Res call({List<Contact> contactList, Contact newContact});
+  $Res call(
+      {List<Contact> contactList, Contact newContact, Contact selectedContact});
 
   $ContactCopyWith<$Res> get newContact;
+  $ContactCopyWith<$Res> get selectedContact;
 }
 
 /// @nodoc
@@ -187,6 +193,7 @@ class _$ContactStateCopyWithImpl<$Res> implements $ContactStateCopyWith<$Res> {
   $Res call({
     Object contactList = freezed,
     Object newContact = freezed,
+    Object selectedContact = freezed,
   }) {
     return _then(_value.copyWith(
       contactList: contactList == freezed
@@ -194,6 +201,9 @@ class _$ContactStateCopyWithImpl<$Res> implements $ContactStateCopyWith<$Res> {
           : contactList as List<Contact>,
       newContact:
           newContact == freezed ? _value.newContact : newContact as Contact,
+      selectedContact: selectedContact == freezed
+          ? _value.selectedContact
+          : selectedContact as Contact,
     ));
   }
 
@@ -206,6 +216,16 @@ class _$ContactStateCopyWithImpl<$Res> implements $ContactStateCopyWith<$Res> {
       return _then(_value.copyWith(newContact: value));
     });
   }
+
+  @override
+  $ContactCopyWith<$Res> get selectedContact {
+    if (_value.selectedContact == null) {
+      return null;
+    }
+    return $ContactCopyWith<$Res>(_value.selectedContact, (value) {
+      return _then(_value.copyWith(selectedContact: value));
+    });
+  }
 }
 
 /// @nodoc
@@ -215,10 +235,13 @@ abstract class _$ContactStateCopyWith<$Res>
           _ContactState value, $Res Function(_ContactState) then) =
       __$ContactStateCopyWithImpl<$Res>;
   @override
-  $Res call({List<Contact> contactList, Contact newContact});
+  $Res call(
+      {List<Contact> contactList, Contact newContact, Contact selectedContact});
 
   @override
   $ContactCopyWith<$Res> get newContact;
+  @override
+  $ContactCopyWith<$Res> get selectedContact;
 }
 
 /// @nodoc
@@ -235,6 +258,7 @@ class __$ContactStateCopyWithImpl<$Res> extends _$ContactStateCopyWithImpl<$Res>
   $Res call({
     Object contactList = freezed,
     Object newContact = freezed,
+    Object selectedContact = freezed,
   }) {
     return _then(_ContactState(
       contactList: contactList == freezed
@@ -242,13 +266,17 @@ class __$ContactStateCopyWithImpl<$Res> extends _$ContactStateCopyWithImpl<$Res>
           : contactList as List<Contact>,
       newContact:
           newContact == freezed ? _value.newContact : newContact as Contact,
+      selectedContact: selectedContact == freezed
+          ? _value.selectedContact
+          : selectedContact as Contact,
     ));
   }
 }
 
 /// @nodoc
 class _$_ContactState implements _ContactState {
-  const _$_ContactState({this.contactList = const [], this.newContact})
+  const _$_ContactState(
+      {this.contactList = const [], this.newContact, this.selectedContact})
       : assert(contactList != null);
 
   @JsonKey(defaultValue: const [])
@@ -256,10 +284,12 @@ class _$_ContactState implements _ContactState {
   final List<Contact> contactList;
   @override
   final Contact newContact;
+  @override
+  final Contact selectedContact;
 
   @override
   String toString() {
-    return 'ContactState(contactList: $contactList, newContact: $newContact)';
+    return 'ContactState(contactList: $contactList, newContact: $newContact, selectedContact: $selectedContact)';
   }
 
   @override
@@ -271,14 +301,18 @@ class _$_ContactState implements _ContactState {
                     .equals(other.contactList, contactList)) &&
             (identical(other.newContact, newContact) ||
                 const DeepCollectionEquality()
-                    .equals(other.newContact, newContact)));
+                    .equals(other.newContact, newContact)) &&
+            (identical(other.selectedContact, selectedContact) ||
+                const DeepCollectionEquality()
+                    .equals(other.selectedContact, selectedContact)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(contactList) ^
-      const DeepCollectionEquality().hash(newContact);
+      const DeepCollectionEquality().hash(newContact) ^
+      const DeepCollectionEquality().hash(selectedContact);
 
   @override
   _$ContactStateCopyWith<_ContactState> get copyWith =>
@@ -286,13 +320,17 @@ class _$_ContactState implements _ContactState {
 }
 
 abstract class _ContactState implements ContactState {
-  const factory _ContactState({List<Contact> contactList, Contact newContact}) =
-      _$_ContactState;
+  const factory _ContactState(
+      {List<Contact> contactList,
+      Contact newContact,
+      Contact selectedContact}) = _$_ContactState;
 
   @override
   List<Contact> get contactList;
   @override
   Contact get newContact;
+  @override
+  Contact get selectedContact;
   @override
   _$ContactStateCopyWith<_ContactState> get copyWith;
 }

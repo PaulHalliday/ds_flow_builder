@@ -10,11 +10,13 @@ final StateNotifierProvider<ContactStateNotifier> contactNotifier =
 class ContactStateNotifier extends StateNotifier<ContactState> {
   ContactStateNotifier([ContactState state]) : super(ContactState());
 
-  addContact(Contact contact) => state = state
-      .copyWith(contactList: [...state.contactList, contact], newContact: null);
+  addContact() => state = state.copyWith(
+      contactList: [...state.contactList, state.newContact], newContact: null);
 
   setNewContact() => state = state.copyWith(newContact: Contact());
 
+  setSelectedContact(Contact contact) =>
+      state = state.copyWith(selectedContact: contact);
   setName(String name) =>
       state = state.copyWith(newContact: state.newContact.copyWith(name: name));
   setPhoneNumber(String phoneNumber) => state = state.copyWith(

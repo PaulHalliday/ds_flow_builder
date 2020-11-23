@@ -15,5 +15,6 @@ abstract class ContactState with _$ContactState {
   const factory ContactState({
     @Default([]) List<Contact> contactList,
     Contact newContact,
+    Contact selectedContact,
   }) = _ContactState;
 }

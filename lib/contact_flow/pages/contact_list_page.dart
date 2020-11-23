@@ -17,7 +17,6 @@ class ContactListPage extends ConsumerWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           contactNot.setNewContact();
-          // context.flow<ContactState>().update((contactState) => contactState);
           context.flow<ContactState>().update((contactState) => contactState);
         },
         child: Icon(Icons.add),
@@ -32,6 +31,13 @@ class ContactListPage extends ConsumerWidget {
           itemBuilder: (BuildContext context, int index) => ListTile(
             title: Text(contactState.contactList[index].name),
             subtitle: Text(contactState.contactList[index].phoneNumber),
+            onTap: () {
+              print(contactState.newContact);
+              contactNot.setSelectedContact(contactState.contactList[index]);
+              context
+                  .flow<ContactState>()
+                  .update((contactState) => contactState);
+            },
           ),
         ),
       ),
