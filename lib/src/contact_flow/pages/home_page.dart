@@ -1,4 +1,4 @@
-import 'package:ds_flow_builder/contact_flow/contact_flow.dart';
+import 'package:ds_flow_builder/src/contact_flow/contact_flow.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {

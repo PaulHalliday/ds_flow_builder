@@ -1,4 +1,4 @@
-import 'package:ds_flow_builder/contact_flow/models/contact_model.dart';
+import 'package:ds_flow_builder/src/contact_flow/models/contact_model.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 final kContactNotifier = StateNotifierProvider(

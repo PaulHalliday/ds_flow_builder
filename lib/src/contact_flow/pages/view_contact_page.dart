@@ -1,4 +1,4 @@
-import 'package:ds_flow_builder/contact_flow/notifiers/contact_notifier.dart';
+import 'package:ds_flow_builder/src/contact_flow/notifiers/contact_notifier.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/all.dart';
 

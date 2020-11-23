@@ -1,8 +1,8 @@
-import 'package:ds_flow_builder/contact_flow/models/contact_model.dart';
-import 'package:ds_flow_builder/contact_flow/notifiers/contact_notifier.dart';
-import 'package:ds_flow_builder/contact_flow/pages/add_contact_page.dart';
-import 'package:ds_flow_builder/contact_flow/pages/contact_list_page.dart';
-import 'package:ds_flow_builder/contact_flow/pages/view_contact_page.dart';
+import 'package:ds_flow_builder/src/contact_flow/models/contact_model.dart';
+import 'package:ds_flow_builder/src/contact_flow/notifiers/contact_notifier.dart';
+import 'package:ds_flow_builder/src/contact_flow/pages/add_contact_page.dart';
+import 'package:ds_flow_builder/src/contact_flow/pages/contact_list_page.dart';
+import 'package:ds_flow_builder/src/contact_flow/pages/view_contact_page.dart';
 import 'package:flow_builder/flow_builder.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
