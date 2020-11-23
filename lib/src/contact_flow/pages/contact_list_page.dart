@@ -10,23 +10,24 @@ class ContactListPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final contactNot = watch(kContactNotifier);
-    final contactState = watch(kContactNotifier.state);
+    final contact = watch(contactNotifier);
+    final contactState = watch(contactNotifier.state);
 
     return Scaffold(
       appBar: AppBar(
         title: Text("Contact List"),
         actions: [
           IconButton(
-              icon: Icon(Icons.check),
-              onPressed: () {
-                contactNot.setSelectedContact(null);
-                context.flow<ContactState>().complete((_) => contactState);
-              })
+            icon: Icon(Icons.check),
+            onPressed: () {
+              contact.resetContactState();
+              context.flow<ContactState>().complete((_) => contactState);
+            },
+          )
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => contactNot.setNewContact(),
+        onPressed: () => contact.setNewContact(),
         child: Icon(Icons.add),
       ),
       body: Visibility(
@@ -39,11 +40,8 @@ class ContactListPage extends ConsumerWidget {
           itemBuilder: (BuildContext context, int index) => ListTile(
             title: Text(contactState.contactList[index].name),
             subtitle: Text(contactState.contactList[index].phoneNumber),
-            onTap: () {
-              contactNot.setSelectedContact(contactState.contactList[index]);
-
-              context.flow<ContactState>().update((_) => contactState);
-            },
+            onTap: () =>
+                contact.setSelectedContact(contactState.contactList[index]),
           ),
         ),
       ),

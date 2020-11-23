@@ -8,23 +8,29 @@ class ViewContactPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final contactNot = watch(kContactNotifier);
-    final contactState = watch(kContactNotifier.state);
+    final contact = watch(contactNotifier);
+    final contactState = watch(contactNotifier.state);
 
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(contactState.selectedContact.name),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              contactState.selectedContact.name,
-              style: Theme.of(context).textTheme.headline6,
-            ),
-            Text(contactState.selectedContact.phoneNumber),
-          ],
+    return WillPopScope(
+      onWillPop: () async {
+        contact.setSelectedContact(null);
+        return true;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text(contactState.selectedContact?.name ?? ""),
+        ),
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text(
+                contactState.selectedContact?.name ?? "",
+                style: Theme.of(context).textTheme.headline6,
+              ),
+              Text(contactState.selectedContact?.phoneNumber ?? ""),
+            ],
+          ),
         ),
       ),
     );
