@@ -1,4 +1,4 @@
-import 'package:ds_flow_builder/src/contact_flow/pages/home_page.dart';
+import 'package:ds_flow_builder/src/home/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
