@@ -1,3 +1,4 @@
+import 'package:ds_flow_builder/contact_flow/contact_flow.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,8 +10,20 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: TextButton(
-          onPressed: () {},
-          child: Text("Navigate"),
+          onPressed: () async {
+            await Navigator.of(context).push(
+              ContactFlow.route(),
+            );
+
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text("Flow Completed!"),
+                content: Text("All done."),
+              ),
+            );
+          },
+          child: Text("Go to Contact List Flow"),
         ),
       ),
     );

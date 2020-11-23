@@ -8,7 +8,8 @@ class ViewContactPage extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final contactState = watch(contactNotifier.state);
+    final contactNot = watch(kContactNotifier);
+    final contactState = watch(kContactNotifier.state);
 
     return Scaffold(
       appBar: AppBar(

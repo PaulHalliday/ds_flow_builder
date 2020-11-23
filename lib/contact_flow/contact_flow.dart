@@ -9,18 +9,24 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 List<Page> onGenerateContactPages(ContactState state, List<Page> pages) {
   return [
-    MaterialPage(child: ContactListPage()),
-    if (state.newContact != null) MaterialPage(child: AddContactPage()),
+    ContactListPage.route(),
+    if (state.newContact != null) AddContactPage.route(),
     if (state.selectedContact != null) ViewContactPage.route(),
   ];
 }
 
 class ContactFlow extends ConsumerWidget {
+  static Route<ContactState> route() => MaterialPageRoute(
+        builder: (BuildContext context) => ContactFlow(),
+      );
+
   @override
   Widget build(BuildContext context, ScopedReader watch) {
-    final contact = watch(contactNotifier.state);
+    final contactState = watch(kContactNotifier.state);
 
     return FlowBuilder<ContactState>(
-        state: contact, onGeneratePages: onGenerateContactPages);
+      state: contactState,
+      onGeneratePages: onGenerateContactPages,
+    );
   }
 }
